@@ -6,5 +6,5 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-const pname = ref('index2');
+const pname = ref('index3');
 </script>
