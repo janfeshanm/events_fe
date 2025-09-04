@@ -1,0 +1,32 @@
+name: Deploy to events.sprocms.com
+run-name: ${{ github.actor }} is deploying to events.sprocms.com
+on: [workflow_dispatch]
+jobs:
+  Deploy-to-sajergo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Build quasar project
+        run: |
+          npm install
+          npx quasar build
+
+      - name: Install zip
+        run: sudo apt install zip
+
+      - name: zip spa folder
+        run: |
+          cd dist/spa
+          zip -r ../../spa.zip *
+
+      - name: Deploy to events.sprocms.com
+        run: |
+          curl -i -H "Content-Type: multipart/form-data" -H "passcode: 123456" -F "file=@spa.zip" -X POST "https://events.sprocms.com/p/ci/fe"
+      - run: echo "This job's status is ${{ job.status }}."
