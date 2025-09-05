@@ -1,7 +1,8 @@
 <template>
   <q-page @keydown.esc="qinput.focus()">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar
+        ><q-btn flat round icon="arrow_back" @click="runCmnd" />
         <q-space />
         <div ref="div1"></div>
         <q-input
@@ -50,7 +51,14 @@
       </q-toolbar>
     </q-header>
     <div class="row">
-      <event-item v-for="event in eventsStore.filteredEvents" :key="event.event" :event="event" />
+      <event-item
+        ref="itemRefs"
+        v-for="event in eventsStore.filteredEvents"
+        :key="event.event"
+        :event="event"
+        @eventFocused="onEventFocused(event)"
+        @eventSelected="onEventSelected(event)"
+      />
     </div>
   </q-page>
 </template>
@@ -60,6 +68,8 @@ import { ref, watch } from 'vue';
 import { useEventsStore } from './events-store';
 import EventItem from './components/EventItem.vue';
 import { QPopupProxy } from 'quasar';
+import type { EventEntry } from './entities';
+//import type { EventEntry } from './entities';
 const qinput = ref(<HTMLInputElement>(<unknown>null));
 const eventsStore = useEventsStore();
 const shadowText = ref('');
@@ -71,12 +81,8 @@ watch(text, (newValue) => {
   eventsStore.filter();
 });
 
-function onfocusSearch() {
-  qinput.value?.focus();
-}
-defineExpose({
-  onfocusSearch,
-});
+//const eiref = ref(new Map<EventEntry, typeof EventItem>());
+const itemRefs = ref([]);
 
 function eventsFn(dt: string): boolean {
   return eventsStore.filterList.dt.includes(Date.parse(dt), 0);
@@ -99,5 +105,19 @@ function filterFn(val: string) {
   shadowText.value = '';
   if (ab.length > 0 && ab[0] != undefined && val.length > 0)
     shadowText.value = ab[0].substring(val.length);
+}
+
+let counter = -1;
+function runCmnd() {
+  counter++;
+  const element = <typeof EventItem>(<unknown>itemRefs.value[counter]);
+  element.focusEvent();
+}
+
+function onEventFocused(event: EventEntry) {
+  console.log('Event Focused ' + event.event);
+}
+function onEventSelected(event: EventEntry) {
+  console.log('Event Selected ' + event.event);
 }
 </script>
