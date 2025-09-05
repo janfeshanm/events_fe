@@ -17,7 +17,13 @@
         >
           <template v-slot:after>
             <q-btn icon="event" flat color="white" tabindex="1">
-              <q-popup-proxy ref="ref1" cover transition-show="scale" transition-hide="scale">
+              <q-popup-proxy
+                ref="ref1"
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+                style="scale: 1.3; transform-origin: 0 0"
+              >
                 <q-date
                   default-year-month="2016/10"
                   v-model="date"

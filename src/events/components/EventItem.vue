@@ -10,20 +10,24 @@
       clickable
       @keydown.enter="console.log('Enter pressed')"
       @click="console.log('Card clicked')"
-      ><q-card-section style="min-height: 200px">
-        <h4>{{ event.event }}</h4>
-      </q-card-section>
+    >
       <q-card-section class="q-pa-none">
-        <q-img src="https://placehold.co/300x180" />
+        <q-img
+          :src="'https://picsum.photos/300/200?random=' + Math.floor(Math.random() * 10 + 1)"
+          height="200px"
+          ><div class="absolute-bottom text-h6">{{ event.event }}</div></q-img
+        >
       </q-card-section>
       <q-card-section>
-        <h5>{{ event.district }}</h5>
+        <h5>
+          <q-icon name="location_on" color="teal" /> {{ event.district }}-{{ event.location }}
+        </h5>
 
-        <h6>{{ event.type }}</h6>
+        <h6><q-icon name="category" color="amber" /> {{ event.type }}</h6>
       </q-card-section>
 
       <q-card-section style="bottom: 0px; position: absolute">
-        <div>{{ event.date }}</div>
+        <div><q-icon name="calendar_today" size="20px" /> {{ event.date }}</div>
       </q-card-section>
     </q-card>
   </div>
