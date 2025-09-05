@@ -2,7 +2,7 @@
   <q-card
     tabindex="1"
     v-ripple
-    class="my-card cursor-pointer q-hoverable"
+    class="my-card q-ma-xs cursor-pointer q-hoverable col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12"
     flat
     bordered
     clickable
@@ -38,11 +38,6 @@ withDefaults(defineProps<Props>(), {
 });
 </script>
 <style lang="scss" scoped>
-.my-card {
-  width: 100%;
-  max-width: 350px;
-  margin: 5px;
-}
 .my-card:focus {
   outline: 2px solid blue;
 }

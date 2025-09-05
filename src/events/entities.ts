@@ -9,3 +9,9 @@ export interface EventEntry {
   id: string;
   dt: number;
 }
+
+export interface FilterEntry {
+  event: string[];
+  date: string[];
+  dt: number[];
+}

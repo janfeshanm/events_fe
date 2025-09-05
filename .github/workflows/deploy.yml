@@ -1,6 +1,6 @@
 name: Deploy to events.sprocms.com
 run-name: ${{ github.actor }} is deploying to events.sprocms.com
-on: [workflow_dispatch]
+on: [workflow_dispatch, push]
 jobs:
   Deploy-to-sajergo:
     runs-on: ubuntu-latest
