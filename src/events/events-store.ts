@@ -1,8 +1,14 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
+import evntsData from 'src/assets/work-task-test.json';
+import type { EventEntry } from './entities';
+import { generateEventPool } from './utils';
+
+const evnts = generateEventPool((<unknown>evntsData) as EventEntry[]);
 
 export const useEventsStore = defineStore('events', {
   state: () => ({
-    counter: 0,
+    origEvents: evnts,
+    filteredEvents: evnts,
   }),
 
   getters: {},
