@@ -1,10 +1,11 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page @keydown.esc="qinput.focus()">
     <q-header elevated>
       <q-toolbar>
         <q-space />
         <div ref="div1"></div>
         <q-input
+          ref="qinput"
           tabindex="1"
           :shadow-text="shadowText"
           dark
@@ -42,12 +43,9 @@
         ><q-space />
       </q-toolbar>
     </q-header>
-    <event-item
-      style="max-width: 100%"
-      v-for="event in eventsStore.filteredEvents"
-      :key="event.event"
-      :event="event"
-    />
+    <div class="row">
+      <event-item v-for="event in eventsStore.filteredEvents" :key="event.event" :event="event" />
+    </div>
   </q-page>
 </template>
 
@@ -56,6 +54,7 @@ import { ref, watch } from 'vue';
 import { useEventsStore } from './events-store';
 import EventItem from './components/EventItem.vue';
 import { QPopupProxy } from 'quasar';
+const qinput = ref(<HTMLInputElement>(<unknown>null));
 const eventsStore = useEventsStore();
 const shadowText = ref('');
 const text = ref('');
@@ -64,6 +63,13 @@ watch(text, (newValue) => {
   eventsStore.searchText = newValue;
   filterFn(newValue);
   eventsStore.filter();
+});
+
+function onfocusSearch() {
+  qinput.value?.focus();
+}
+defineExpose({
+  onfocusSearch,
 });
 
 function eventsFn(dt: string): boolean {
