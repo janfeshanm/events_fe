@@ -106,7 +106,6 @@ export default defineConfig((ctx) => {
     framework: {
       config: {},
       cssAddon: true,
-
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
 
@@ -214,7 +213,7 @@ export default defineConfig((ctx) => {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'events-fe',
+        appId: 'q1',
       },
     },
 
