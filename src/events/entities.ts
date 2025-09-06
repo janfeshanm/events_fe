@@ -15,3 +15,8 @@ export interface FilterEntry {
   date: string[];
   dt: number[];
 }
+
+export interface SearchContext {
+  text: string;
+  date: { from: string; to: string };
+}
