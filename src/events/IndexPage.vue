@@ -35,6 +35,7 @@
       />
     </div>
     <audio-controller v-if="isHearing" ref="acntrlr" v-on:run-command="notifyCmd" />
+    <h2 v-else>No events found</h2>
   </q-page>
 </template>
 
