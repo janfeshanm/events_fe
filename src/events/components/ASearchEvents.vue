@@ -12,13 +12,22 @@
     class="custom-search-input"
   >
     <template v-slot:after>
-      <q-btn icon="event" size="lg" flat color="white" tabindex="0">
+      <q-btn
+        aria-label="Date Range Filter"
+        icon="event"
+        size="lg"
+        flat
+        color="white"
+        tabindex="0"
+        data-cy="dateRange"
+      >
         <q-popup-proxy
           ref="ref1"
+          aria-label="Date Range Filter"
           cover
           transition-show="scale"
           transition-hide="scale"
-          style="scale: 1.3; transform-origin: 0 0"
+          style="scale: 1.2; transform-origin: 0 0"
         >
           <q-date
             default-year-month="2016/10"
@@ -26,6 +35,7 @@
             minimal
             :events="eventsFn"
             range
+            aria-label="Date Range Filter"
           />
         </q-popup-proxy>
       </q-btn>
