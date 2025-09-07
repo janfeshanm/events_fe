@@ -29,6 +29,18 @@ export const useEventsStore = defineStore('events', {
         );
       //this.filterList = generateFilter(this.filteredEvents);
     },
+    filter2(searchTerms: string[]) {
+      this.filteredEvents = this.origEvents.filter((event) =>
+        searchTerms.some((substring) => event.json.includes(substring.toLocaleLowerCase())),
+      );
+      if (this.dateRange != null)
+        this.filteredEvents = this.filteredEvents.filter(
+          (event) =>
+            event.dt >= Date.parse(this.dateRange.from) &&
+            event.dt <= Date.parse(this.dateRange.to),
+        );
+      //this.filterList = generateFilter(this.filteredEvents);
+    },
   },
 });
 

@@ -6,7 +6,7 @@ import ASearchEvents from 'src/events/components/ASearchEvents.vue';
 installQuasarPlugin();
 
 describe('Search Event Component', () => {
-  it('should mount component with data', async () => {
+  it('should mount component with data', () => {
     expect(ASearchEvents).toBeTruthy();
     const wrapper = mount(ASearchEvents, {
       attachTo: document.body,

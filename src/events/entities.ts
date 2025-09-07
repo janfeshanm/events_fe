@@ -8,6 +8,8 @@ export interface EventEntry {
   json: string;
   id: string;
   dt: number;
+  audio: string;
+  image: string;
 }
 
 export interface FilterEntry {

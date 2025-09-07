@@ -3,36 +3,38 @@
     <q-card
       ref="cardRef"
       style="height: 100%"
-      tabindex="1"
+      tabindex="0"
       v-ripple
       class="event-card cursor-pointer q-hoverable"
       flat
       bordered
       clickable
       @keydown.enter="eventSelected()"
-      @dblclick:pre="eventSelected()"
+      @dblclick="eventSelected()"
       @focus="eventFocused()"
     >
       <q-card-section class="q-pa-none">
-        <q-img
-          :aria-label="event.event"
-          :alt="event.event"
-          :src="'https://picsum.photos/300/200?random=' + Math.floor(Math.random() * 10 + 1)"
-          height="200px"
+        <q-img :aria-label="event.event" :alt="event.event" src="926-300x200.jpg" height="200px"
           ><div class="absolute-bottom text-h6">{{ event.event }}</div></q-img
         >
       </q-card-section>
       <q-card-section>
-        <h6><q-icon name="home" color="amber" /> {{ event.organisation }}</h6>
-        <h5>
+        <h2 style="font-size: 24px; line-height: 1rem">
+          <q-icon name="home" color="amber" /> {{ event.organisation }}
+        </h2>
+        <h3 style="font-size: 24px; line-height: 1rem" data-cy="location">
           <q-icon name="location_on" color="teal" /> {{ event.district }}-{{ event.location }}
-        </h5>
+        </h3>
 
-        <h6><q-icon name="category" color="amber" /> {{ event.type }}</h6>
+        <h3 style="font-size: 24px; line-height: 2rem; margin-bottom: 36px">
+          <q-icon name="category" color="amber" /> {{ event.type }}
+        </h3>
       </q-card-section>
 
       <q-card-section style="bottom: 0px; position: absolute">
-        <div><q-icon name="calendar_today" size="20px" /> {{ event.date }}</div>
+        <div style="font-size: larger">
+          <q-icon name="calendar_today" size="20px" /> {{ event.date }}
+        </div>
       </q-card-section>
     </q-card>
   </div>

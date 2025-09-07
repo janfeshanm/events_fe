@@ -1,7 +1,7 @@
 <template>
   <q-input
     ref="qinput"
-    tabindex="1"
+    tabindex="0"
     :shadow-text="shadowText"
     dark
     debounce="10"
@@ -9,9 +9,10 @@
     v-model="model.text"
     label="Find Events"
     color="white"
+    class="custom-search-input"
   >
     <template v-slot:after>
-      <q-btn icon="event" flat color="white" tabindex="1">
+      <q-btn icon="event" size="lg" flat color="white" tabindex="0">
         <q-popup-proxy
           ref="ref1"
           cover
@@ -75,3 +76,10 @@ function eventsFn(dt: string): boolean {
   return props.filterList.dt.includes(Date.parse(dt), 0);
 }
 </script>
+
+<style scoped>
+.custom-search-input {
+  height: 60px;
+  font-size: 16px;
+}
+</style>
