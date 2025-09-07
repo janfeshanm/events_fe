@@ -33,9 +33,9 @@
         @eventFocused="onEventFocused(event)"
         @eventSelected="onEventSelected(event)"
       />
+      <h2 v-if="eventsStore.filteredEvents.length < 1">No events found</h2>
     </div>
     <audio-controller v-if="isHearing" ref="acntrlr" v-on:run-command="notifyCmd" />
-    <h2 v-else>No events found</h2>
   </q-page>
 </template>
 
