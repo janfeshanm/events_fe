@@ -16,6 +16,7 @@ describe('QuasarButton', () => {
           dt: 1475289600,
           audio: '',
           image: '',
+          audiom: '',
         },
       },
     });

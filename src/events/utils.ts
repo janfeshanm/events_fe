@@ -9,6 +9,7 @@ export function generateEventPool(events: EventEntry[]): EventEntry[] {
     json: event.event.toLowerCase(),
     id: String(counter++),
     audio: 'title/' + event.event + '_rec_' + ado[index] + '.mp3',
+    audiom: 'all/' + (index + 1) + '.mp3',
     image: '',
   }));
 }

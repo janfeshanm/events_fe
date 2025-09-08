@@ -12,6 +12,7 @@ export const useEventsStore = defineStore('events', {
     searchText: '',
     dateRange: <{ from: string; to: string }>(<unknown>null),
     filterList: generateFilter(evnts),
+    isHearing: false,
   }),
 
   getters: {},

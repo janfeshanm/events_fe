@@ -23,6 +23,7 @@ describe('EventItem Component', () => {
           dt: 1475289600,
           audio: '',
           image: '',
+          audiom: '',
         },
       },
     });

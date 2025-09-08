@@ -1,5 +1,10 @@
 <template>
   <q-page-sticky v-if="isActive" position="bottom-right" :offset="[18, 18]">
+    <q-card
+      >Find and Filter [keywords]
+      <br />
+      Go to Next Event<br />Go to Previous Event<br />More Info<br />Help</q-card
+    >
     <q-circular-progress
       role="progressbar"
       id="combo"
@@ -86,13 +91,13 @@ function stopRecording() {
       adChunks = [];
       silenceCounter = 0;
       speechCounter = 0;
-      const audioUrl = URL.createObjectURL(audioBlob);
-      const audio = new Audio(audioUrl);
-      audio
-        .play()
-        .then(() => {})
-        .catch(() => {});
-      //getText(audioBlob);
+      // const audioUrl = URL.createObjectURL(audioBlob);
+      // const audio = new Audio(audioUrl);
+      // audio
+      //   .play()
+      //   .then(() => {})
+      //   .catch(() => {});
+      getText(audioBlob);
     }
     mRecorder = null;
     //await handleClick();
@@ -258,7 +263,7 @@ function urlDownload(audioBlob: Blob, filename?: string): string | void {
 //   startRecording(getText);
 // }
 
-/* function getText(blob1: Blob) {
+function getText(blob1: Blob) {
   const url = `https://api.elevenlabs.io/v1/speech-to-text`;
 
   const form = new FormData();
@@ -298,7 +303,7 @@ const emits = defineEmits<{
 
 function runCommand(command: string) {
   emits('runCommand', command);
-} */
+}
 
 function speak(text: string): string | void {
   return generateSpeech(text);

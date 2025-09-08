@@ -9,6 +9,7 @@ export interface EventEntry {
   id: string;
   dt: number;
   audio: string;
+  audiom: string;
   image: string;
 }
 

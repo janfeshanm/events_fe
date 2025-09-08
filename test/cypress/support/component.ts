@@ -14,7 +14,7 @@
 // ***********************************************************
 
 import './commands';
-import '@cypress/code-coverage/support'; 
+import '@cypress/code-coverage/support';
 
 // Quasar styles
 import 'quasar/src/css/index.sass'; // Or 'quasar/dist/quasar.prod.css' if no CSS preprocessor is installed
@@ -33,7 +33,7 @@ import { Dialog } from 'quasar';
 // See https://github.com/cypress-io/cypress/issues/22611
 import { VueTestUtils } from 'cypress/vue';
 const { config } = VueTestUtils;
-
+import 'cypress-axe';
 // Example to import i18n from boot and use as plugin
 // import { i18n } from 'src/boot/i18n';
 

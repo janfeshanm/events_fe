@@ -4,7 +4,6 @@
       ref="cardRef"
       style="height: 100%"
       tabindex="0"
-      v-ripple
       class="event-card cursor-pointer q-hoverable"
       flat
       bordered
